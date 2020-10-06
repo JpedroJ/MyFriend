@@ -14,6 +14,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    var mediaQueryData = MediaQuery.of(context);
+    final double widthScreen = mediaQueryData.size.width;
+    final double heightScreen = mediaQueryData.size.height;
+
     return Scaffold(
 
       backgroundColor: Colors.white,
@@ -25,14 +29,10 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.blue,
         centerTitle: true,
       ),
-      body: GridView(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, crossAxisSpacing: 10.0, mainAxisSpacing: 10.0),
-
-        //margin: EdgeInsets.all(5),
-        //   padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-        //   alignment: Alignment.center,
-
+      body: GridView.count(
+        padding: EdgeInsets.zero,
+        crossAxisCount: 2,
+          childAspectRatio: widthScreen/heightScreen * 1.68,
         children: <Widget>[
           Container(
             child: buildFlatButton("Onde\nestou?", Colors.black, Colors.white,
